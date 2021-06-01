@@ -1,15 +1,13 @@
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const pool = require("./db");
+const server = require("./api/server");
+const dotenv = require("dotenv");
 
-//middlewares
-app.use(cors());
-app.use(express.json());
+dotenv.config();
 
-//ROUTES//
+const PORT = process.env.PORT || 4000;
 
-// create a teacher
+server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+/* // create a teacher
 app.post("/teacher", async (req, res) => {
   try {
     const { first_name, last_name, homeroom_number, department, email, phone } =
@@ -35,8 +33,4 @@ app.get("/teachers", async (req, res) => {
   } catch (error) {
     res.status(500).send(error);
   }
-});
-
-app.listen(5000, () => {
-  console.log("listening on port 5000");
-});
+}); */
